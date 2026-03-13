@@ -1,0 +1,12 @@
+# dependências do bundler
+/vendor/bundle
+
+# variáveis de ambiente
+.env
+
+# arquivos temporários
+log/
+tmp/
+
+# sistema
+.DS_Store
