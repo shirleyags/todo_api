@@ -3,7 +3,7 @@ require 'json'
 require 'time'
 
 require_relative '../repositories/task_repository'
-require_relative '../services/task_service'
+require_relative '../use_cases/create_task'
 require_relative '../support/response_helper'
 require_relative '../validators/task_validator'
 
