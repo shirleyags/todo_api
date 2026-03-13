@@ -2,13 +2,15 @@ require_relative 'rules/title_required_rule'
 require_relative 'rules/title_length_rule'
 require_relative 'rules/priority_rule'
 require_relative 'rules/due_date_rule'
+require_relative 'rules/status_rule'
 
 class TaskValidator
   RULES = [
     TitleRequiredRule,
     TitleLengthRule,
     PriorityRule,
-    DueDateRule
+    DueDateRule,
+    StatusRule
   ]
 
   def self.validate_create(payload)
