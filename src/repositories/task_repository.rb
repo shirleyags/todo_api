@@ -27,8 +27,12 @@ class TaskRepository
     )
   end
 
-  def self.find_all
-    TASKS_COLLECTION.find.map do |document|
+  def self.find_all(filters = {})
+    query = {}
+    query[:status] = filters[:status] if filters[:status]
+    query[:priority] = filters[:priority] if filters[:priority]
+
+    TASKS_COLLECTION.find(query).map do |document|
       build_task(document)
     end
   end

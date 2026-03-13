@@ -17,7 +17,7 @@ class TasksRoutes < Sinatra::Base
   post '/tasks' do
     payload = JSON.parse(request.body.read, symbolize_names: true)
 
-    result = TaskService.create(payload)
+    result = CreateTask.call(payload)
 
     return error_response('validation_failed', 400, result[:errors]) if result.is_a?(Hash) && result[:errors]
 
@@ -25,7 +25,12 @@ class TasksRoutes < Sinatra::Base
   end
 
   get '/tasks' do
-    tasks = TaskRepository.find_all
+    filters = {
+      status: params['status'],
+      priority: params['priority']
+    }.compact
+
+    tasks = TaskRepository.find_all(filters)
     json_response(tasks.map(&:to_h))
   end
 
