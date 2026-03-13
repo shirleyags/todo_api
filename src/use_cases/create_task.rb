@@ -1,12 +1,5 @@
-require 'securerandom'
-require 'time'
-
-require_relative '../models/task'
-require_relative '../repositories/task_repository'
-require_relative '../validators/task_validator'
-
-class TaskService
-  def self.create(payload)
+class CreateTask
+  def self.call(payload)
     errors = TaskValidator.validate_create(payload)
     return { errors: errors } if errors.any?
 
